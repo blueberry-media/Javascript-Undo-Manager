@@ -30,7 +30,7 @@ var UndoManager = function () {
         /*
         Add a command to the queue.
         */
-        add: function (command) {
+        add: function (command , description ) {
             if (isExecuting) {
                 return this;
             }
@@ -38,7 +38,7 @@ var UndoManager = function () {
             // invalidate items higher on the stack
             commands.splice(index + 1, commands.length - index);
 
-            commands.push(command);
+            commands.push({command:command,description:description});
 
             // set the current index to the end
             index = commands.length - 1;
@@ -59,7 +59,7 @@ var UndoManager = function () {
         Perform undo: call the undo function at the current index and decrease the index by 1.
         */
         undo: function () {
-            var command = commands[index];
+            var command = commands[index].command;
             if (!command) {
                 return this;
             }
@@ -75,7 +75,7 @@ var UndoManager = function () {
         Perform redo: call the redo function at the next index and increase the index by 1.
         */
         redo: function () {
-            var command = commands[index + 1];
+            var command = commands[index + 1].command;
             if (!command) {
                 return this;
             }

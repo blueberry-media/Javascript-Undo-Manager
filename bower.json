@@ -1,0 +1,14 @@
+{
+  "name": "Javascript-Undo-Manager",
+  "version": "1.0.0",
+  "authors": [
+    "Arthur Clemens <arthurclemens@gmail.com>",
+    "Martijn van Beek <martijn@blueberry.nl>"
+  ],
+  "description": "UndoManager for javascript",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*"
+  ]
+}
